@@ -4,183 +4,312 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Red Dot Restaurant &amp; Bar · 321 Warren St, Hudson, NY</title>
-<meta name="description" content="Red Dot Restaurant &amp; Bar, on Warren Street in Hudson, NY since Bastille Day 1999. Dinner, weekend brunch, a garden with an outdoor fire, a dance floor and a screening room for private parties. (518) 828-3657.">
-<meta name="theme-color" content="#0d0b0b">
+<meta name="description" content="Red Dot Restaurant &amp; Bar on Warren Street in Hudson, NY, since Bastille Day 1999. Dinner Friday to Tuesday, weekend brunch, a garden with an outdoor fire, a dance floor and a screening room for private parties.">
+<meta name="theme-color" content="#f5efe3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
-<link rel="preload" as="image" href="img/bar-frame-504.webp" type="image/webp">
+<link rel="apple-touch-icon" href="img/favicon.png">
 <link rel="stylesheet" href="styles.css">
+<link rel="modulepreload" href="vendor/three.module.min.js">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<script>(function(){var q=new URLSearchParams(location.search),ok=false;try{var c=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch(e){}
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(ok&&!rm&&!q.has('static'))document.body.classList.add('exp');})();</script>
 <p class="flag" role="note">Concept preview · not affiliated with Red Dot</p>
 
-<header class="nav">
-  <a class="brand" href="#top" aria-label="Red Dot home"><span class="brand__dot" aria-hidden="true"></span><span>RED DOT</span></a>
-  <nav aria-label="Main"><a href="#story">Story</a><a href="#menu">Menu</a><a href="#parties">Parties</a><a href="#visit">Visit</a></nav>
-  <a class="btn btn--ghost nav__cta" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+<div class="exp-only" id="exp">
+  <canvas id="scene" aria-label="An interactive 3D impression of an evening on Warren Street and inside a warm bar. Scroll to move through it." role="img"></canvas>
+  <div class="grainfx" aria-hidden="true"></div>
+  <div class="hud" id="hud">
+    <div class="hud__top">
+      <a class="hud__logo" href="#top-exp" aria-label="Red Dot, back to the start"><img src="img/logo-light.png" width="147" height="31" alt="Red Dot"></a>
+      <button class="hud__chip" type="button" data-open="visit"><span class="pip" aria-hidden="true"></span><span data-chip-text>Tonight at Red Dot</span></button>
+      <div class="hud__right">
+        <button class="icon-btn" type="button" id="snd" aria-pressed="false" aria-label="Ambient sound, off">♪ <span class="snd-l">SOUND OFF</span></button>
+        <a class="icon-btn hud__static" href="?static=1">FULL PAGE</a>
+        <a class="btn btn--fill hud__reserve" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+      </div>
+    </div>
+    <div class="hots" id="hots">
+      <button class="hot" type="button" data-open="menu" data-anchor="menu">MENU</button>
+      <button class="hot" type="button" data-open="visit" data-anchor="hours">HOURS TONIGHT</button>
+      <button class="hot" type="button" data-open="reserve" data-anchor="reserve">RESERVE</button>
+      <button class="hot" type="button" data-open="parties" data-anchor="parties">PRIVATE PARTIES</button>
+      <button class="hot" type="button" data-open="visit" data-anchor="visit">VISIT</button>
+    </div>
+    <div class="switch" id="switch" role="group" aria-label="Dinner or brunch">
+      <button type="button" data-mode="dinner" aria-pressed="true">DINNER</button><button type="button" data-mode="brunch" aria-pressed="false">BRUNCH</button>
+    </div>
+    <div class="progress" aria-hidden="true"><span id="prog"></span></div>
+  </div>
+
+  <div class="track" id="track">
+    <section class="ch ch--intro" id="top-exp" aria-labelledby="intro-h">
+      <div class="card card--intro">
+        <p class="intro__k">321 Warren Street · Hudson, NY · Since 1999</p>
+        <h1 class="intro__t" id="intro-h">Red&nbsp;Dot</h1>
+        <p class="intro__s">Restaurant <i>&amp;</i> Bar. An evening on Warren Street, starting now.</p>
+        <button class="hud__chip intro__chip" type="button" data-open="visit"><span class="pip" aria-hidden="true"></span><span data-chip-text>Tonight at Red Dot</span></button>
+        <div class="ctas">
+          <a class="btn btn--glow" href="#ch-sign">SCROLL IN</a>
+          <a class="btn btn--glow intro__res" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+        </div>
+      </div>
+    </section>
+    <section class="ch" id="ch-sign" aria-labelledby="sign-h"><div class="card">
+      <p class="intro__k">Chapter 1 · The sign</p>
+      <h2 class="h2" id="sign-h">Look for the red dot</h2>
+      <p>Halfway down Warren Street, a red dot hangs over the door. Point at it.</p>
+    </div></section>
+    <section class="ch" id="ch-door" aria-labelledby="door-h"><div class="card card--r">
+      <p class="intro__k">Chapter 2 · Since Bastille Day 1999</p>
+      <h2 class="h2" id="door-h">It began as Raymakers</h2>
+      <p>A Belgian frites, burgers and mussels bar. In 2002 Red Dot took over the building next door and added a dance floor, a screening room and a garden with an outdoor fire.</p>
+    </div></section>
+    <section class="ch" id="ch-bar" aria-labelledby="bar-h"><div class="card">
+      <p class="intro__k">Chapter 3 · Inside</p>
+      <h2 class="h2" id="bar-h">Pull up a yellow stool</h2>
+      <p>Move your cursor or finger to carry the light. Tap the glowing markers for the menu, tonight’s hours, a table or a party. Switch dinner and brunch to change the room.</p>
+    </div></section>
+    <section class="ch" id="ch-garden" aria-labelledby="garden-h"><div class="card card--r">
+      <p class="intro__k">Chapter 4 · Out back</p>
+      <h2 class="h2" id="garden-h">The garden, the dance floor, the screening room</h2>
+      <p>For fundraisers, Halloween parties, weddings and charity auctions.</p>
+      <div class="ctas"><button class="btn btn--glow" type="button" data-open="parties">SEE THE SPACES</button></div>
+    </div></section>
+    <div class="ch ch--end" aria-hidden="true"></div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" hidden>
+  <div class="sheet__in"><button class="closer" type="button" id="sheet-x">CLOSE</button><h2 class="sr" id="sheet-h">Details</h2><div id="sheet-body"></div></div>
+</div>
+
+<header class="top">
+  <div class="top__in">
+    <a class="brand" href="#main" aria-label="Red Dot, back to top"><img src="img/logo.png" width="147" height="31" alt="Red Dot"></a>
+    <nav class="top__nav" aria-label="Main">
+      <a href="#menu">Menu</a><a href="#story">Story</a><a href="#parties">Parties</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn--line top__cta" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+  </div>
 </header>
 
-<main id="top">
-<!-- HERO: a dark room. The red dot is a lens: move your cursor/finger and it shows the bar. -->
-<section class="hero" aria-labelledby="hero-h">
-  <canvas class="hero__gl" aria-hidden="true"></canvas>
-  <div class="hero__copy">
-    <p class="kicker">321 Warren Street · Hudson, NY · Since Bastille Day 1999</p>
-    <h1 id="hero-h" class="mega"><span class="mega__line" data-split>LOOK FOR</span><span class="mega__line" data-split>THE <em>RED&nbsp;DOT</em></span></h1>
-    <p class="hero__hint" aria-hidden="true"><span class="hint-desk">Move the dot. Find the bar.</span><span class="hint-touch">Drag the dot. Find the bar.</span></p>
-    <div class="status" data-status aria-live="polite"><span class="pip" data-lottie aria-hidden="true"></span><span data-status-text>Dinner Fri–Tue 5–9:30 PM · Brunch Sat–Sun 11 AM–3 PM</span></div>
-    <p class="status__sub" data-status-sub>Wed &amp; Thu hours aren't posted. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a></p>
-    <div class="btns"><a class="btn btn--red btn--lg" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE A TABLE</a><a class="btn btn--ghost btn--lg" href="#menu">SEE THE MENU</a></div>
-  </div>
-  <figure class="hero__frame" data-lens>
-    <picture><source type="image/webp" srcset="img/bar-frame-504.webp"><img class="hero__base" src="img/bar-frame-504.jpg" width="504" height="630" alt="The bar at Red Dot: a wooden counter with yellow stools, bottles on the back shelves, warm low light." fetchpriority="high"></picture>
-    <picture class="hero__lit" aria-hidden="true"><source type="image/webp" srcset="img/bar-frame-504.webp"><img src="img/bar-frame-504.jpg" width="504" height="630" alt=""></picture>
-    <span class="hero__ring" aria-hidden="true"></span>
-  </figure>
-</section>
+<main id="main">
+<section class="hero" id="hero" aria-labelledby="hero-h">
+  <div class="hero__in">
+    <div class="hero__copy">
+      <p class="eyebrow rv" style="--d:0">No. 321 · Warren Street · Hudson, New York</p>
+      <h1 id="hero-h" class="hero__title rv" style="--d:1">Red&nbsp;Dot<span class="hero__sub">Restaurant <i>&amp;</i> Bar</span></h1>
+      <p class="hero__lede rv" style="--d:2">A Warren Street bistro and bar since Bastille Day&nbsp;1999. Mussels, frites, a proper burger, weekend brunch, and a garden out back with an outdoor fire.</p>
 
-<!-- STORY: the name, as a line with a dot that rides along it -->
-<section class="story" id="story" aria-labelledby="story-h">
-  <div class="wrap">
-    <p class="kicker kicker--red">How it got its name</p>
-    <h2 id="story-h" class="disp">Twenty-seven years on Warren&nbsp;Street</h2>
-    <ol class="tl">
-      <span class="tl__rail" aria-hidden="true"><span class="tl__dot"></span></span>
-      <li class="tl__item"><p class="tl__yr">1999</p><h3>Bastille Day</h3><p>Opens at 321 Warren Street as Raymakers, a Belgian frites, burgers and mussels bar, when only a few businesses were on the street.</p></li>
-      <li class="tl__item"><p class="tl__yr">1999</p><h3>“Look for the red dot”</h3><p>Six months in, a regular suggests a new name, after the big red dot on the sign. It sticks.</p></li>
-      <li class="tl__item"><p class="tl__yr">2002</p><h3>Next door</h3><p>Red Dot takes over the building next door. A dance floor, a screening room and a garden with an outdoor fire follow.</p></li>
-      <li class="tl__item"><p class="tl__yr">Weekends</p><h3>Brunch</h3><p>Weekend brunch joins dinner. Eggs Benedict on a potato latke is still on the menu.</p></li>
-      <li class="tl__item"><p class="tl__yr">October</p><h3>Halloween</h3><p>Red Dot has hosted Halloween parties over the years.</p></li>
-      <li class="tl__item"><p class="tl__yr">2026</p><h3>Still here</h3><p>Dinner Friday to Tuesday, brunch Saturday and Sunday. Same address.</p></li>
-    </ol>
-  </div>
-</section>
+      <div class="tonight rv" style="--d:3" data-tonight>
+        <p class="tonight__label">Tonight at Red Dot</p>
+        <p class="status" aria-live="polite"><span class="pip" aria-hidden="true"></span><span data-status-text>Dinner Fri–Tue 5–9:30 PM · Brunch Sat–Sun 11 AM–3 PM</span></p>
+        <p class="tonight__sub" data-status-sub>Wed &amp; Thu hours aren’t posted. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a></p>
+      </div>
 
-<!-- DOT REEL: real gallery photos, scrubbed inside the dot -->
-<section class="reel" id="reel" aria-label="Photos from Red Dot's gallery">
-  <div class="reel__pin">
-    <div class="reel__dot"><canvas class="reel__cv" width="384" height="480" aria-hidden="true"></canvas></div>
-    <p class="reel__cap" aria-hidden="true"><span>The bar</span><span>Seared salmon</span><span>Shishito peppers</span><span>Benedict on a latke</span><span>Challah French toast</span></p>
+      <div class="ctas rv" style="--d:4">
+        <a class="btn btn--fill hero__reserve" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE A TABLE</a>
+        <a class="btn btn--line" href="#menu">SEE THE MENU</a>
+      </div>
+    </div>
+
+    <figure class="hero__fig rv rv--img" style="--d:2">
+      <div class="frame"><picture>
+        <source type="image/webp" srcset="img/bar-frame-504.webp">
+        <img src="img/bar-frame-504.jpg" width="504" height="630" alt="The bar at Red Dot: a wooden counter with yellow stools, bottles on the back shelves, warm low light." fetchpriority="high">
+      </picture></div>
+      <figcaption><span>Fig. 1</span> The bar, from Red Dot’s own gallery.</figcaption>
+    </figure>
   </div>
-  <div class="reel__static wrap">
-    <img src="img/bar-frame-504.jpg" width="504" height="630" alt="The bar at Red Dot." loading="lazy">
-    <img src="img/salmon.jpg" width="800" height="800" alt="Seared salmon over chickpeas and sautéed spinach." loading="lazy">
-    <img src="img/shishito.jpg" width="800" height="800" alt="Shishito peppers with feta and lemon." loading="lazy">
-    <img src="img/benedict-latke.jpg" width="800" height="800" alt="Eggs Benedict with smoked salmon and hollandaise on a potato latke." loading="lazy">
-    <img src="img/french-toast.jpg" width="800" height="800" alt="Challah French toast with berries, whipped cream and maple syrup." loading="lazy">
-  </div>
+  <ul class="facts" aria-label="At a glance">
+    <li><b>Dinner</b> Fri–Tue · 5–9:30 PM</li>
+    <li><b>Brunch</b> Sat &amp; Sun · 11 AM–3 PM</li>
+    <li><b>Phone</b> <a href="tel:+15188283657">(518) 828-3657</a></li>
+  </ul>
 </section>
 
 <section class="menu" id="menu" aria-labelledby="menu-h">
   <div class="wrap">
-    <p class="kicker kicker--red">From the posted menu</p>
-    <h2 id="menu-h" class="disp">Frites, mussels &amp; a good burger</h2>
-    <p class="lede">A few dishes from the current menu. Photos from Red Dot's gallery; some show past dishes.</p>
-    <div class="menu__grid">
-      <div class="card"><h3>Dinner</h3><ul class="items">
-        <li><span>Mussels Marnier</span><b>$23</b><small>1 lb North Atlantic mussels, white wine, butter, parsley, garlic shallot broth</small></li>
-        <li><span>Hamburger &amp; Frites</span><b>$18</b><small>Add grilled onion +$3 · cheddar, Swiss or bleu +$4 · bacon +$5</small></li>
-        <li><span>Fish &amp; Chips</span><b>$24</b><small>Mixed baby greens and frites</small></li>
-        <li><span>Chana Masala</span><b>$20</b><small>Chickpea curry over basmati rice, cilantro</small></li>
-        <li><span>Maine Cod Cakes</span><b>$16</b><small>Spicy tartar sauce</small></li>
-        <li><span>Red Dot Chocolate Pudding</span><b>$10</b><small>Whipped cream, caramel, candied nuts</small></li>
-      </ul></div>
-      <div class="card"><h3>Weekend brunch</h3><ul class="items">
-        <li data-photo="img/benedict-latke.jpg"><span>Eggs Benedict</span><b>$18</b><small>Canadian bacon on an English muffin. With sautéed spinach $15 · with smoked salmon $17 · on potato latke +$2</small></li>
-        <li data-photo="img/french-toast.jpg"><span>Challah French Toast</span><b>$14</b><small>Fresh berries, whipped cream, maple syrup</small></li>
-        <li><span>Croque Monsieur</span><b>$18</b><small>Ham &amp; gruyère, béchamel, frites</small></li>
-        <li><span>Potato &amp; Latkes</span><b>$16</b><small>Apple sauce &amp; sour cream</small></li>
-      </ul></div>
-      <div class="card"><h3>House cocktails</h3><ul class="items">
-        <li><span>Hot Dotty</span><b>$16</b><small>Bourbon, ginger liqueur, honey, lemon</small></li>
-        <li><span>Garden Spritz</span><b>$16</b><small>Green Chartreuse, St-Germain, prosecco</small></li>
-        <li><span>Fire Blossom</span><b>$16</b><small>Tequila, Ancho Reyes, lime, simple syrup, Gran Marnier</small></li>
-        <li><span>Nightshade</span><b>$16</b><small>Rye, crème de cacao, Frangelico, bitters</small></li>
-      </ul></div>
+    <header class="sec-head">
+      <p class="eyebrow">The menu · from the posted menu</p>
+      <h2 id="menu-h" class="h2">Frites, mussels <i>&amp;</i> a good burger</h2>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Menu">
+      <button role="tab" id="t-dinner" aria-controls="p-dinner" aria-selected="true">Dinner</button>
+      <button role="tab" id="t-brunch" aria-controls="p-brunch" aria-selected="false" tabindex="-1">Brunch</button>
+      <button role="tab" id="t-drinks" aria-controls="p-drinks" aria-selected="false" tabindex="-1">Cocktails</button>
     </div>
-    <p class="note">Prices as posted on reddothudson.net, checked Oct 12, 2026. Specials (like Meatloaf Monday) change. Call to confirm.</p>
-    <div class="btns"><a class="btn btn--ghost" href="https://reddothudson.net/hudson-red-dot-restaurant-and-bar-food-menu" target="_blank" rel="noopener">FULL MENU</a><a class="btn btn--ghost" href="https://reddothudson.net/hudson-red-dot-restaurant-and-bar-drink-menu" target="_blank" rel="noopener">DRINKS</a></div>
+
+    <div class="menu__body">
+      <div class="menu__panels">
+        <div class="panel" role="tabpanel" id="p-dinner" aria-labelledby="t-dinner" tabindex="0">
+          <p class="panel__when">Friday to Tuesday · 5–9:30 PM</p>
+          <ul class="items">
+            <li><h3>Mussels Marnier</h3><span class="lead" aria-hidden="true"></span><b>$23</b><p>1 lb North Atlantic mussels, white wine, butter, parsley, garlic shallot broth</p></li>
+            <li><h3>Hamburger &amp; Frites</h3><span class="lead" aria-hidden="true"></span><b>$18</b><p>Add grilled onion +$3 · cheddar, Swiss or bleu +$4 · bacon +$5</p></li>
+            <li><h3>Fish &amp; Chips</h3><span class="lead" aria-hidden="true"></span><b>$24</b><p>Mixed baby greens and frites</p></li>
+            <li><h3>Chana Masala</h3><span class="lead" aria-hidden="true"></span><b>$20</b><p>Chickpea curry over basmati rice, cilantro</p></li>
+            <li><h3>Maine Cod Cakes</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Spicy tartar sauce</p></li>
+            <li><h3>Red Dot Chocolate Pudding</h3><span class="lead" aria-hidden="true"></span><b>$10</b><p>Whipped cream, caramel, candied nuts</p></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-brunch" aria-labelledby="t-brunch" tabindex="0" hidden>
+          <p class="panel__when">Saturday &amp; Sunday · 11 AM–3 PM</p>
+          <ul class="items">
+            <li><h3>Eggs Benedict</h3><span class="lead" aria-hidden="true"></span><b>$18</b><p>Canadian bacon on an English muffin. With sautéed spinach $15 · with smoked salmon $17 · on potato latke +$2</p></li>
+            <li><h3>Challah French Toast</h3><span class="lead" aria-hidden="true"></span><b>$14</b><p>Fresh berries, whipped cream, maple syrup</p></li>
+            <li><h3>Croque Monsieur</h3><span class="lead" aria-hidden="true"></span><b>$18</b><p>Ham &amp; gruyère, béchamel, frites</p></li>
+            <li><h3>Potato &amp; Latkes</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Apple sauce &amp; sour cream</p></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-drinks" aria-labelledby="t-drinks" tabindex="0" hidden>
+          <p class="panel__when">House cocktails at the bar</p>
+          <ul class="items">
+            <li><h3>Hot Dotty</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Bourbon, ginger liqueur, honey, lemon</p></li>
+            <li><h3>Garden Spritz</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Green Chartreuse, St-Germain, prosecco</p></li>
+            <li><h3>Fire Blossom</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Tequila, Ancho Reyes, lime, simple syrup, Gran Marnier</p></li>
+            <li><h3>Nightshade</h3><span class="lead" aria-hidden="true"></span><b>$16</b><p>Rye, crème de cacao, Frangelico, bitters</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="menu__plates" aria-label="Photos from Red Dot’s gallery">
+        <figure class="plate" data-for="p-dinner"><img src="img/salmon.webp" width="800" height="800" loading="lazy" alt="Seared salmon over chickpeas and sautéed spinach."><figcaption>Seared salmon, chickpeas &amp; spinach</figcaption></figure>
+        <figure class="plate" data-for="p-dinner"><img src="img/shishito.webp" width="800" height="800" loading="lazy" alt="Shishito peppers with feta and lemon."><figcaption>Shishito peppers, feta, lemon</figcaption></figure>
+        <figure class="plate" data-for="p-brunch" hidden><img src="img/benedict-latke.webp" width="800" height="800" loading="lazy" alt="Eggs Benedict with smoked salmon and hollandaise on a potato latke."><figcaption>Smoked salmon Benedict on a latke</figcaption></figure>
+        <figure class="plate" data-for="p-brunch" hidden><img src="img/french-toast.webp" width="800" height="800" loading="lazy" alt="Challah French toast with berries, whipped cream and maple syrup."><figcaption>Challah French toast</figcaption></figure>
+        <figure class="plate plate--wide" data-for="p-drinks" hidden><img src="img/bar-frame-504.webp" width="504" height="630" loading="lazy" alt="The bar at Red Dot with bottles on the back shelves."><figcaption>Where the cocktails happen</figcaption></figure>
+        <p class="plates__note">Photos from Red Dot’s gallery; some show past dishes.</p>
+      </aside>
+    </div>
+    <p class="note">Prices as posted on Red Dot’s website, checked Oct 12, 2026. Specials (like Meatloaf Monday) change. Call to confirm.</p>
+    <div class="ctas ctas--left">
+      <a class="btn btn--line" href="https://reddothudson.net/hudson-red-dot-restaurant-and-bar-food-menu" target="_blank" rel="noopener">FULL MENU</a>
+      <a class="btn btn--line" href="https://reddothudson.net/hudson-red-dot-restaurant-and-bar-drink-menu" target="_blank" rel="noopener">DRINK LIST</a>
+    </div>
   </div>
-  <div class="peek" aria-hidden="true"><img alt="" src="img/benedict-latke.jpg"></div>
 </section>
 
-<section class="events" id="events" aria-labelledby="events-h">
-  <div class="wrap">
-    <p class="kicker">Coming up on Warren Street</p>
-    <h2 id="events-h" class="disp">Events</h2>
-    <div class="ev">
-      <article class="ev__card"><p class="ev__date">October</p><h3>Halloween at Red Dot</h3><p>Red Dot has hosted Halloween parties over the years. This year's date and details aren't posted yet. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a>.</p></article>
-      <article class="ev__card"><p class="ev__date">Sat · Dec 5 · 5–8 PM</p><h3>Winter Walk</h3><p>Hudson's Winter Walk comes right past the door on Warren Street. Red Dot's own plans for the night aren't posted. Call to confirm.</p></article>
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="wrap story__in">
+    <header class="sec-head">
+      <p class="eyebrow">Since 1999</p>
+      <h2 id="story-h" class="h2">Twenty-seven years on Warren&nbsp;Street</h2>
+    </header>
+    <ol class="years">
+      <li><span class="yr">1999</span><div><h3>Bastille Day opening</h3><p>Red Dot opens at 321 Warren Street as Raymakers, a Belgian frites, burgers and mussels bar. The mussels and frites are still on the menu.</p></div></li>
+      <li><span class="yr">2002</span><div><h3>Next door, and out back</h3><p>Red Dot takes over the building next door and adds a dance floor, a screening room and a garden with an outdoor fire.</p></div></li>
+      <li><span class="yr">Now</span><div><h3>Dinner, brunch, parties</h3><p>Dinner five nights a week, brunch on weekends, and a long history of Halloween parties, fundraisers and weddings.</p></div></li>
+    </ol>
+    <div class="cal">
+      <p class="eyebrow">On the calendar</p>
+      <div class="cal__row">
+        <article><p class="cal__d">October</p><h3>Halloween at Red Dot</h3><p>Red Dot has hosted Halloween parties over the years. This year’s date and details aren’t posted yet. Call to confirm.</p></article>
+        <article><p class="cal__d">Sat · Dec 5 · 5–8 PM</p><h3>Winter Walk</h3><p>Hudson’s Winter Walk passes right by the door. Red Dot’s own plans for the night aren’t posted. Call to confirm.</p></article>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="parties" id="parties" aria-labelledby="parties-h">
   <div class="wrap">
-    <p class="kicker kicker--red">Groups &amp; private parties</p>
-    <h2 id="parties-h" class="disp">Host it at Red Dot</h2>
-    <p class="lede">Fundraisers, Halloween parties, weddings, charity auctions. In 2002 Red Dot took over the building next door and added a dance floor, a screening room and a garden.</p>
+    <header class="sec-head sec-head--light">
+      <p class="eyebrow">Groups &amp; private parties</p>
+      <h2 id="parties-h" class="h2">Three rooms for a party worth remembering</h2>
+      <p class="lede">Fundraisers, Halloween parties, weddings, charity auctions. Pick a space to see what it’s for.</p>
+    </header>
     <div class="spaces">
-      <button class="space space--garden" type="button" aria-pressed="false"><span class="space__n">01</span><span class="space__h">The Garden</span><span class="space__p">A garden space with an outdoor fire.</span></button>
-      <button class="space space--dance" type="button" aria-pressed="false"><span class="space__n">02</span><span class="space__h">The Dance Floor</span><span class="space__p">For the party that keeps going after dinner.</span></button>
-      <button class="space space--screen" type="button" aria-pressed="false"><span class="space__n">03</span><span class="space__h">The Screening Room</span><span class="space__p">A room of your own for the group.</span></button>
+      <div class="spaces__list" role="tablist" aria-label="Party spaces" aria-orientation="vertical">
+        <button role="tab" id="s-garden" aria-controls="sp-garden" aria-selected="true"><span class="n">01</span>The Garden</button>
+        <button role="tab" id="s-dance" aria-controls="sp-dance" aria-selected="false" tabindex="-1"><span class="n">02</span>The Dance Floor</button>
+        <button role="tab" id="s-screen" aria-controls="sp-screen" aria-selected="false" tabindex="-1"><span class="n">03</span>The Screening Room</button>
+      </div>
+      <div class="spaces__panels">
+        <div class="space" role="tabpanel" id="sp-garden" aria-labelledby="s-garden" tabindex="0">
+          <h3>The Garden</h3><p>Out back, with an outdoor fire. Good for an open-air reception or a long summer evening.</p>
+          <p class="fit">Good for: receptions · birthdays · fundraisers</p>
+        </div>
+        <div class="space" role="tabpanel" id="sp-dance" aria-labelledby="s-dance" tabindex="0" hidden>
+          <h3>The Dance Floor</h3><p>Added in 2002 when Red Dot took over the building next door. For the party that keeps going after dinner.</p>
+          <p class="fit">Good for: weddings · Halloween · milestone parties</p>
+        </div>
+        <div class="space" role="tabpanel" id="sp-screen" aria-labelledby="s-screen" tabindex="0" hidden>
+          <h3>The Screening Room</h3><p>A room of your own for the group, also from the 2002 expansion.</p>
+          <p class="fit">Good for: screenings · rehearsal dinners · auctions</p>
+        </div>
+        <p class="spaces__note">Capacity for each space isn’t published. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a>.</p>
+        <div class="ctas ctas--left">
+          <a class="btn btn--fill btn--onDark party__book" href="https://tmt.spotapps.co/private-parties?spot_id=149842" target="_blank" rel="noopener">BOOK A PARTY</a>
+          <a class="btn btn--lineLight" href="tel:+15188283657">CALL</a>
+        </div>
+      </div>
     </div>
-    <p class="note">Capacity for each space isn't published. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a>.</p>
-    <div class="btns"><a class="btn btn--red btn--lg" href="https://tmt.spotapps.co/private-parties?spot_id=149842" target="_blank" rel="noopener">BOOK A PARTY</a></div>
   </div>
 </section>
 
 <section class="reserve" id="reserve" aria-labelledby="reserve-h">
-  <div class="wrap reserve__in">
-    <div>
-      <h2 id="reserve-h" class="disp">Reserve a table</h2>
-      <p>Send a request and Red Dot confirms. For tonight or large groups, call.</p>
-      <p class="note">The request form's time slots don't match the posted hours exactly. Call to confirm brunch and late times.</p>
-    </div>
-    <div class="btns"><a class="btn btn--red btn--lg" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a><a class="btn btn--ghost btn--lg" href="tel:+15188283657">CALL</a></div>
+  <div class="wrap">
+    <p class="eyebrow">Book a table</p>
+    <h2 id="reserve-h" class="h2">Reserve at Red Dot</h2>
+    <p class="lede">Send a request and Red Dot confirms. For tonight or a large group, call.</p>
+    <p class="note">The request form’s time slots don’t match the posted hours exactly. Call to confirm brunch and late times.</p>
+    <div class="ctas ctas--left"><a class="btn btn--fill reserve__go" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">REQUEST A TABLE</a><a class="btn btn--line" href="tel:+15188283657">CALL</a></div>
   </div>
 </section>
 
 <section class="visit" id="visit" aria-labelledby="visit-h">
   <div class="wrap visit__in">
     <div>
-      <h2 id="visit-h" class="disp">Visit</h2>
+      <header class="sec-head"><p class="eyebrow">Find us</p><h2 id="visit-h" class="h2">Visit</h2></header>
       <address>Red Dot Restaurant &amp; Bar<br>321 Warren Street<br>Hudson, NY 12534</address>
-      <p><a class="tel-big" href="tel:+15188283657">(518) 828-3657</a></p>
-      <p class="note">Pickup: no online ordering. Call to order.</p>
-      <div class="btns"><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Red%20Dot%20Restaurant%20%26%20Bar%2C%20321%20Warren%20St%2C%20Hudson%2C%20NY%2012534&amp;destination_place_id=ChIJx9mY3aKV3YkRz1U7vthuwDE" target="_blank" rel="noopener">DIRECTIONS</a></div>
+      <p><a class="tel" href="tel:+15188283657">(518) 828-3657</a></p>
+      <p class="note">Pickup: no online ordering. Call ahead.</p>
+      <div class="ctas ctas--left">
+        <a class="btn btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Red%20Dot%20Restaurant%20%26%20Bar%2C%20321%20Warren%20St%2C%20Hudson%2C%20NY%2012534" target="_blank" rel="noopener">DIRECTIONS</a>
+        <a class="btn btn--line" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+      </div>
     </div>
     <div>
-      <h3 class="disp disp--sm">Hours</h3>
-      <table class="hours" data-hours><tbody>
-        <tr data-day="1"><th>Monday</th><td>Dinner 5–9:30 PM</td></tr>
-        <tr data-day="2"><th>Tuesday</th><td>Dinner 5–9:30 PM</td></tr>
-        <tr data-day="3"><th>Wednesday</th><td>Not posted*</td></tr>
-        <tr data-day="4"><th>Thursday</th><td>Not posted*</td></tr>
-        <tr data-day="5"><th>Friday</th><td>Dinner 5–9:30 PM</td></tr>
-        <tr data-day="6"><th>Saturday</th><td>Brunch 11 AM–3 PM<br>Dinner 5–9:30 PM</td></tr>
-        <tr data-day="0"><th>Sunday</th><td>Brunch 11 AM–3 PM<br>Dinner 5–9:30 PM</td></tr>
-      </tbody></table>
-      <p class="note">As posted on reddothudson.net: "Dinner Hours 5pm-9:30 Friday to Tuesday; Brunch Hours Sat. and Sun. 11am-3pm." *Wed/Thu hours aren't posted, call to confirm: <a href="tel:+15188283657">(518) 828-3657</a>. Holiday hours not posted.</p>
+      <h3 class="h3">Hours</h3>
+      <table class="hours" data-hours>
+        <caption class="sr">Posted hours</caption>
+        <tbody>
+          <tr data-day="1"><th scope="row">Monday</th><td>Dinner 5–9:30 PM</td></tr>
+          <tr data-day="2"><th scope="row">Tuesday</th><td>Dinner 5–9:30 PM</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>Not posted*</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>Not posted*</td></tr>
+          <tr data-day="5"><th scope="row">Friday</th><td>Dinner 5–9:30 PM</td></tr>
+          <tr data-day="6"><th scope="row">Saturday</th><td>Brunch 11 AM–3 PM<br>Dinner 5–9:30 PM</td></tr>
+          <tr data-day="0"><th scope="row">Sunday</th><td>Brunch 11 AM–3 PM<br>Dinner 5–9:30 PM</td></tr>
+        </tbody>
+      </table>
+      <p class="note">*Wednesday and Thursday hours aren’t posted, and holiday hours aren’t posted. Call to confirm: <a href="tel:+15188283657">(518) 828-3657</a>.</p>
     </div>
   </div>
 </section>
 </main>
 
 <footer class="foot">
-  <span class="foot__plate"><img src="img/logo.png" alt="Red Dot" width="160" height="33"></span>
-  <p><a href="https://www.instagram.com/reddothudson" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/310465430424" target="_blank" rel="noopener">Facebook</a> · <a href="https://reddothudson.net/" target="_blank" rel="noopener">Current site</a></p>
-  <p class="small">Concept redesign preview. Not affiliated with Red Dot Restaurant &amp; Bar. Photos from Red Dot's own website gallery.</p>
+  <div class="wrap foot__in">
+    <img src="img/logo-light.png" width="147" height="31" alt="Red Dot">
+    <p><a href="https://www.instagram.com/reddothudson" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/310465430424" target="_blank" rel="noopener">Facebook</a> · <a href="https://reddothudson.net/" target="_blank" rel="noopener">Current site</a></p>
+    <p>Concept redesign preview. Not affiliated with Red Dot Restaurant &amp; Bar. Photos from Red Dot’s own website gallery.</p>
+  </div>
 </footer>
+
 <nav class="mbar" aria-label="Quick actions">
-  <a href="tel:+15188283657">CALL</a><a href="#menu">MENU</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Red%20Dot%20Restaurant%20%26%20Bar%2C%20321%20Warren%20St%2C%20Hudson%2C%20NY%2012534&amp;destination_place_id=ChIJx9mY3aKV3YkRz1U7vthuwDE" target="_blank" rel="noopener">DIRECTIONS</a><a class="mbar__res" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
+  <a href="tel:+15188283657">CALL</a><a href="#menu">MENU</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Red%20Dot%20Restaurant%20%26%20Bar%2C%20321%20Warren%20St%2C%20Hudson%2C%20NY%2012534" target="_blank" rel="noopener">MAP</a><a class="mbar__res" href="https://tmt.spotapps.co/reservations?spot_id=149842" target="_blank" rel="noopener">RESERVE</a>
 </nav>
-<script src="hours.js"></script>
+<script src="main.js"></script>
 <script src="vendor/gsap.min.js" defer></script>
 <script src="vendor/ScrollTrigger.min.js" defer></script>
-<script src="vendor/lottie_light.min.js" defer></script>
-<script src="fx.js" defer></script>
+<script type="module" src="exp.js"></script>
 </body>
 </html>

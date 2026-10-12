@@ -22,9 +22,7 @@ The three party-space cards (garden, dance floor, screening room) are typographi
 - Winter Walk Dec 5: https://gossipsofrivertown.blogspot.com/2026/09/the-word-on-winter-walk.html (via community brief)
 - Reservation and party links: the existing request forms embedded on reddothudson.net/hudson-red-dot-restaurant-and-bar-reservations and ...-party
 
-## v3 "next" build additions
-- frames/f000–f049.webp: 384x480 slow push-in frames rendered from the five real gallery photos above (bar, salmon, shishito, Benedict, French toast) with crossfades. Every frame is a downscale or 1:1 crop of the source; nothing upscaled. No stock or AI imagery.
-- dot-pulse.json: abstract pulsing red-dot Lottie, drawn for this concept.
-- Timeline facts: Bastille Day 1999 opening as Raymakers (Belgian frites, burgers, mussels); name from a regular, "look for the red dot", after six months (Main Street Magazine, Oct 2017; Visit Hudson listing); 2002 building next door, dance floor, screening room, garden with outdoor fire (reddothudson.net); weekend brunch; Halloween parties.
-- Logo is shown on a white plate (it was designed for a white background).
-- Libraries self-hosted in vendor/: GSAP + ScrollTrigger, lottie-web (light). WebGL glow is a small hand-written shader.
+## v4 "fresh" additions
+- img/logo-light.png: white version of the Red Dot wordmark, generated from img/logo.png (alpha preserved) for use on dark backgrounds only.
+- img/*.webp: re-encodes of the same photos at their native size (no upscaling).
+- Fonts: Fraunces and Instrument Sans (Google Fonts, OFL).

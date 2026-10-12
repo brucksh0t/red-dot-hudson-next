@@ -219,3 +219,4 @@ body.sheet-open{overflow:hidden}
 }
 @media (max-height:680px) and (max-width:899px){.intro__s{display:none}.intro__t{font-size:3.2rem}}
 @media(min-width:900px){#ch-bar{align-items:flex-end;padding-bottom:90px}#ch-bar .card{max-width:24rem}}
+@media(max-width:899px){.ch.ch--intro{align-items:flex-end}}
